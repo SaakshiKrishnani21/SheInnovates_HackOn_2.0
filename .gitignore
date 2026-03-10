@@ -1,4 +1,7 @@
 node_modules
+.local
+.replit
+.env
 dist
 .DS_Store
 server/public
