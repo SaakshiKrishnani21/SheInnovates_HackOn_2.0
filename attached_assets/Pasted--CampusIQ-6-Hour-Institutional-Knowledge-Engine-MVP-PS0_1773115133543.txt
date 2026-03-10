@@ -1,0 +1,218 @@
+# 🚀 CampusIQ - 6-Hour Institutional Knowledge Engine MVP
+# PS007 Hackathon Winner - Complete React + Node + MySQL (NO DOCKER)
+
+Build a COMPLETE, production-ready MVP called *CampusIQ* - "AI-powered institutional talent discovery engine".
+
+## 🎯 EXACT REQUIREMENTS (6-hour scope only)
+
+*Frontend*: React + Tailwind CSS (professional dark/light theme)
+*Backend*: Node.js + Express + MySQL  
+*Database*: MySQL (local XAMPP/MySQL Workbench)
+*AI*: OpenAI/Groq API for natural language → JSON filters
+*NO DOCKER* - Simple npm setup only
+
+## 📊 DATA MODEL (3 tables exactly)
+students: id (INT PK AUTO), name (VARCHAR), department (VARCHAR), year (VARCHAR), created_at (TIMESTAMP)
+skills: id (INT PK AUTO), student_id (INT FK), skill_name (VARCHAR)
+projects: id (INT PK AUTO), student_id (INT FK), title (VARCHAR), domain (VARCHAR)
+
+text
+
+## 🏗️ EXACT 4 PAGES TO BUILD
+
+### 1. DASHBOARD (/)
+Hero: "CampusIQ - Discover Talent, Skills & Projects"
+
+Stats cards: Total Students | Total Skills | Total Projects
+
+Search bar: "Find React students" → instant results below
+
+Featured students carousel (3 cards)
+
+Professional gradient background
+
+text
+
+### 2. ADD DATA (/add)
+Single form (1 page):
+
+Student: name, department, year (dropdown: 1st,2nd,3rd,4th)
+
+Skills: comma-separated input → auto-split
+
+Project: title, domain dropdown (AI/ML, Web, Blockchain, Mobile, IoT, DevOps, Cybersecurity)
+
+"Add to CampusIQ" button → success toast + dashboard redirect
+
+text
+
+### 3. SEARCH RESULTS (/)
+Natural language search:
+"Find students who know React" → Student cards showing:
+
+Avatar placeholder + Name + Department + Year
+
+Skill badges (color-coded)
+
+Linked project card below each student
+
+"View Network" button → /student/:id
+
+text
+
+### 4. RELATIONSHIP VIEW (/student/:id)
+Clean visualization (CSS-based):
+
+CENTER: Large student card
+
+RIGHT: Skill badges connected with CSS arrows
+
+BOTTOM: Project cards connected with CSS arrows
+
+Back button + "Find similar students"
+
+text
+
+## 🎨 PROFESSIONAL UI/UX SPEC
+
+*Color Scheme* (Dark/Light toggle):
+- Primary: #6366F1 (Indigo)
+- Secondary: #8B5CF6 (Purple) 
+- Accent: #06B6D4 (Cyan)
+- Success: #10B981
+- Dark: #0F172A, #1E293B
+- Light: #F8FAFC, #FFFFFF
+
+*Components*:
+- Glassmorphism cards: backdrop-blur-md bg-white/10
+- Smooth animations: framer-motion (fade, slide)
+- Typography: Inter font (Google Fonts)
+- Responsive: Tailwind mobile-first
+- Loading: Spinners everywhere
+- Toasts: react-hot-toast
+
+## 🌱 PRELOAD SEED DATA (10 students exactly)
+
+Tanusri,CSE,3rd → React,Node,AI → "AI Learning Chatbot","AI/ML"
+
+Rahul,ECE,4th → Python,ML,FastAPI → "Resume Analyzer","AI/ML"
+
+Sneha,IT,2nd → Java,SQL,Cybersecurity → "Threat Detection","Cybersecurity"
+
+Arjun,CSE,3rd → Blockchain,Solidity,Rust → "Escrow System","Blockchain"
+
+Priya,ECE,3rd → Flutter,Dart,Firebase → "Campus Event App","Mobile"
+
+Vikram,ME,4th → IoT,Arduino,Python → "Smart Irrigation","IoT"
+
+Aisha,CSE,2nd → React,Native,Node → "Freelance Platform","Web"
+
+Karan,IT,3rd → AWS,Docker,Kubernetes → "Cloud Monitor","DevOps"
+
+Neha,ECE,3rd → ComputerVision,OpenCV → "Traffic Analyzer","AI/ML"
+
+Rohan,CSE,4th → Solidity,Web3,React → "NFT Marketplace","Blockchain"
+
+text
+
+## 🔧 AI IMPLEMENTATION (Critical)
+
+*Backend endpoint* POST /api/interpret-query:
+Input: { query: "Find React + AI students" }
+Output:
+{
+"type": "student_search",
+"skills": ["React", "AI"],
+"domains": null,
+"limit": 5
+}
+
+text
+
+*Exact AI Prompt*:
+"Convert this natural language query into JSON filters for student search. Extract skills, domains, type. Query: '{user_query}'. Return ONLY valid JSON: {{"type": "student_search|project_search", "skills": [], "domains": [], "limit": 5}}"
+
+text
+
+## 📱 EXACT API ENDPOINTS REQUIRED
+GET /api/stats → {students:10, skills:45, projects:10}
+GET /api/search?q=react → [{id, name, skills:[], projects:[]}]
+POST /api/students → {name,dept,year,skills,project}
+GET /api/student/:id → {student, skills:[], projects:[]}
+POST /api/interpret-query → AI JSON filters
+
+text
+
+## 🚀 SIMPLE 2-MINUTE SETUP
+
+1. MySQL (XAMPP/Workbench)
+CREATE DATABASE campusIQ;
+-- Run provided database.sql
+
+2. Backend
+cd backend && npm install
+cp .env.example .env
+
+Add OPENAI_API_KEY=your_key
+npm start → http://localhost:5000
+
+3. Frontend
+cd frontend && npm install
+npm start → http://localhost:3000
+
+text
+
+## ⏱️ 6-HOUR EXECUTION GUIDE
+Hour 1: Backend + MySQL + seed data
+Hour 2: Forms + CRUD APIs
+Hour 3: AI interpreter + search API
+Hour 4: Dashboard + search UI
+Hour 5: Relationship view + animations
+Hour 6: Polish + demo prep
+
+text
+
+## 🚀 DELIVERABLE STRUCTURE
+campusIQ/
+├── frontend/ # React + Tailwind
+│ ├── src/
+│ ├── tailwind.config.js
+│ └── package.json
+├── backend/ # Express + MySQL
+│ ├── routes/
+│ ├── .env.example
+│ └── package.json
+├── database.sql # Schema + 10 students
+├── README.md # Setup + Demo Flow
+└── demo-queries.json # 5 sample queries
+
+text
+
+## 🎤 JUDGES DEMO FLOW (Exact)
+"Find React students" → Tanusri + Aisha + Rohan
+
+"Show AI/ML projects" → Rahul + Tanusri + Neha
+
+Click Tanusri → Network: React→AI→Chatbot
+
+"Blockchain teammates" → Arjun + Rohan highlighted
+
+text
+
+## 💎 WINNING PITCH
+"CampusIQ transforms institutional data into an AI-queryable talent network, connecting students, skills, and projects through natural language discovery."
+
+---
+
+*GENERATE COMPLETE WORKING CODE NOW* with:
+✅ All 4 pages + components  
+✅ Professional Tailwind (dark/light theme)
+✅ MySQL schema + seed script (10 students)
+✅ OpenAI integration (env variable)
+✅ Mobile responsive + animations
+✅ 2-minute npm setup instructions
+✅ Demo-perfect for hackathon judges
+✅ Exact package.json + .env.example
+✅ NO DOCKER - pure local setup
+
+*Include every file needed. Make it copy-paste deployable.*

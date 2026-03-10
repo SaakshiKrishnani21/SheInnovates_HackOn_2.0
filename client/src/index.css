@@ -1,0 +1,95 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: 'Inter', sans-serif;
+  
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
+
+:root {
+  /* Default to dark mode based on spec */
+  --background: 222 47% 11%; /* #0F172A */
+  --foreground: 210 40% 98%; /* #F8FAFC */
+  
+  --card: 215 32% 17%; /* #1E293B */
+  --card-foreground: 210 40% 98%;
+  
+  --popover: 215 32% 17%;
+  --popover-foreground: 210 40% 98%;
+  
+  --primary: 239 84% 67%; /* #6366F1 Indigo */
+  --primary-foreground: 210 40% 98%;
+  
+  --secondary: 258 90% 66%; /* #8B5CF6 Purple */
+  --secondary-foreground: 210 40% 98%;
+  
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  
+  --accent: 188 94% 37%; /* #06B6D4 Cyan */
+  --accent-foreground: 210 40% 98%;
+  
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 239 84% 67%;
+  
+  --radius: 0.75rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased selection:bg-primary/30;
+    /* Professional gradient background for dark mode */
+    background-image: 
+      radial-gradient(at 0% 0%, hsla(239,84%,67%,0.15) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, hsla(258,90%,66%,0.15) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, hsla(188,94%,37%,0.15) 0px, transparent 50%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)];
+  }
+  
+  .glass-input {
+    @apply bg-white/5 backdrop-blur-sm border-white/10 focus:border-primary/50 focus:ring-primary/50 text-white placeholder:text-white/40;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent;
+  }
+}
